@@ -1,9 +1,9 @@
 export default class Todo {
     constructor(title, desc, dueDate, priority, completed = false) {
-        this._title = title;
-        this._desc = desc;
-        this._dueDate = new Date(dueDate);
-        this._priority = priority;
+        this._title = title
+        this._desc = desc
+        this._dueDate = new Date(dueDate)
+        this._priority = priority
         this._completed = completed
     }
 
@@ -23,5 +23,7 @@ export default class Todo {
     set priority(newPriority) {
         this._priority = newPriority
     }
+
+
 
 }

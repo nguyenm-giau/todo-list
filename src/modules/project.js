@@ -1,4 +1,4 @@
-export default class createProject {
+export default class Project {
     constructor(name) {
         this._name = name;
         this._todos = [];
@@ -17,4 +17,12 @@ export default class createProject {
         return this._todos
     }
 
+    sortDateDesc() {
+        return [...this._todos].sort((a, b) => b._dueDate - a._dueDate)
+    
+    }
+    
+    sortDateAsc() {
+        return [...this._todos].sort((a, b) => a._dueDate - b._dueDate)
+    }
 }
