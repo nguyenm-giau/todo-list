@@ -1,28 +1,28 @@
 export default class Project {
     constructor(name) {
         this._name = name;
-        this._todos = [];
+        this._tasks = [];
     }
 
-    addTodo(todo) {
-        this._todos.push(todo)
+    addTask(task) {
+        this._tasks.push(task)
     }
 
-    removeTodo(index) {
-        if (index < 0 || index >= this._todos.length) throw new Error("Invalid index")
-        this._todos.splice(index, 1)
+    removeTask(index) {
+        if (index < 0 || index >= this._tasks.length) throw new Error("Invalid index")
+        this._tasks.splice(index, 1)
     }
 
-    getTodos() {
-        return this._todos
+    getTasks() {
+        return this._tasks
     }
 
-    sortTodosDateDesc() {
-        return [...this._todos].sort((a, b) => b._dueDate - a._dueDate)
+    sortTasksDateDesc() {
+        return [...this._tasks].sort((a, b) => b._dueDate - a._dueDate)
     
     }
     
-    sortTodosDateAsc() {
-        return [...this._todos].sort((a, b) => a._dueDate - b._dueDate)
+    sortTasksDateAsc() {
+        return [...this._tasks].sort((a, b) => a._dueDate - b._dueDate)
     }
 }

@@ -1,5 +1,5 @@
 import Project from "./project.js";
-import Todo from "./todo.js";
+import Task from "./task.js";
 
 class ProjectManager {
     constructor() {
@@ -16,22 +16,26 @@ class ProjectManager {
         this.projects.splice(index, 1);
     }
 
-    getAllTodos() {
-        return this.projects.flatMap(project => project.getTodos());
+    getAllTasks() {
+        return this.projects.flatMap(project => project.getTasks());
     }
 
     saveToLocalStorage() {
         localStorage.setItem('projects', JSON.stringify(this.projects));
     }
 
-    sortAllTodosByDate(oder = "asc") {
+    sortAllTasksByDate(oder = "asc") {
         if (oder === "asc") {
-           return this.getAllTodos().slice().sort((a, b) => a._dueDate - b._dueDate);
+           return this.getAllTasks().slice().sort((a, b) => a._dueDate - b._dueDate);
         } else if (oder === "desc") {
-            return this.getAllTodos().slice().sort((a, b) => b._dueDate - a._dueDate);
+            return this.getAllTasks().slice().sort((a, b) => b._dueDate - a._dueDate);
         } else {
             throw new Error("Invalid order");
         }
+    }
+
+    getProjectByName(name) {
+        return this.projects.find(project => project._name === name);
     }
 
     loadFromLocalStorage() {
@@ -40,15 +44,15 @@ class ProjectManager {
             const projectsArray = JSON.parse(projectsData);
             this.projects = projectsArray.map(projectData => {
                 const project = new Project(projectData._name);
-                projectData._todos.forEach(todoData => {
-                    const todo = new Todo(
-                        todoData._title,
-                        todoData._desc,
-                        todoData._dueDate,
-                        todoData._priority,
-                        todoData._completed
+                projectData._tasks.forEach(taskData => {
+                    const task = new Task(
+                        taskData._title,
+                        taskData._desc,
+                        taskData._dueDate,
+                        taskData._priority,
+                        taskData._completed
                     );
-                    project.addTodo(todo);
+                    project.addTask(task);
                 });
                 return project;
             });

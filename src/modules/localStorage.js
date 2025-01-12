@@ -20,11 +20,11 @@ function storageAvailable(type) {
 }
 
 
-export function initializeProjects(defaultProjects, defaultTodos) {
+export function initializeProjects(defaultProjects, defaultTasks) {
   if (storageAvailable("localStorage")) {
     if (!projectManager.loadFromLocalStorage()) {
       console.log("No projects found in local storage, adding default projects");
-      addDefaultProjects(defaultProjects, defaultTodos);
+      addDefaultProjects(defaultProjects, defaultTasks);
       projectManager.saveToLocalStorage();
     } else {
       console.log("Projects loaded from local storage");
@@ -33,10 +33,12 @@ export function initializeProjects(defaultProjects, defaultTodos) {
     console.error("Local storage is not available");
   }
 }
-
-function addDefaultProjects(defaultProjects, defaultTodos) {
-  defaultProjects.forEach(project => projectManager.addProject(project));
-  defaultProjects[0].addTodo(defaultTodos[0]);
-  defaultProjects[1].addTodo(defaultTodos[1]);
-  defaultProjects[1].addTodo(defaultTodos[2]);
+  
+function addDefaultProjects(defaultProjects, defaultTasks) {
+  defaultProjects.forEach((project, index) => {
+    projectManager.addProject(project);
+    if (defaultTasks[index]) {
+      project.addTask(defaultTasks[index]);
+    }
+  });
 }

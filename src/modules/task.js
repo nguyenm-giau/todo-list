@@ -1,4 +1,4 @@
-export default class Todo {
+export default class Task {
     constructor(title, desc, dueDate, priority, completed = false) {
         this._title = title
         this._desc = desc
