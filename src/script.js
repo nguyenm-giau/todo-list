@@ -1,21 +1,25 @@
 import "./styles.css";
-import Project from "./modules/createProject.js"
-import Todo from "./modules/createTodo.js"
+import Project from "./modules/project.js";
+import Todo from "./modules/todo.js";
+import projectManager from "./modules/projectManager.js";
+import { format } from "date-fns";
+import { initializeProjects } from "./modules/localStorage.js";
 
-const projects = [
-    new Project("Personal")
-]
+const defaultProjects = [
+    new Project("Personal"),
+    new Project("Work")
+];
 
-const todo1 = new Todo("Chasing dogs at 12pm", "very important", "none", "High")
-const todo2 = new Todo("Go to the bathroom", "When you gotta go", "none", "Low")
+const defaultTodos = [
+    new Todo("Clean the house", "A demo task", "2023-10-10", "High"),
+    new Todo("Fix bug", "A demo task", "2021-09-21", "Low"),
+    new Todo ("Test1", "Test", "2021-09-22", "High"),
+];
 
-projects[0].addTodo(todo1)
-projects[0].addTodo(todo2)
+initializeProjects(defaultProjects, defaultTodos);
 
-const workProject = new Project("Work")
-workProject.addTodo(todo1)
-workProject.addTodo(todo2)
+projectManager.getAllTodos().forEach(todo => console.log(format(todo._dueDate, "dd/MM/yyyy")));
+projectManager.saveToLocalStorage()
 
-todo1.completed = true
+console.log(projectManager.getAllTodos())
 
-console.log(projects)

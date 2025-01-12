@@ -24,6 +24,16 @@ class ProjectManager {
         localStorage.setItem('projects', JSON.stringify(this.projects));
     }
 
+    sortAllTodosByDate(oder = "asc") {
+        if (oder === "asc") {
+           return this.getAllTodos().slice().sort((a, b) => a._dueDate - b._dueDate);
+        } else if (oder === "desc") {
+            return this.getAllTodos().slice().sort((a, b) => b._dueDate - a._dueDate);
+        } else {
+            throw new Error("Invalid order");
+        }
+    }
+
     loadFromLocalStorage() {
         const projectsData = localStorage.getItem('projects');
         if (projectsData) {

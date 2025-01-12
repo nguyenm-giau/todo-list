@@ -1,6 +1,6 @@
 import projectManager from "./projectManager";
 
-export function storageAvailable(type) {
+function storageAvailable(type) {
     let storage;
     try {
       storage = window[type];
@@ -22,17 +22,21 @@ export function storageAvailable(type) {
 
 export function initializeProjects(defaultProjects, defaultTodos) {
   if (storageAvailable("localStorage")) {
-      if (projectManager.loadFromLocalStorage()) {
-          console.log("Projects loaded from local storage");
-      } else {
-          console.log("No projects found in local storage, adding default projects");
-          defaultProjects.forEach(project => projectManager.addProject(project));
-          defaultProjects.forEach(project => {
-              defaultTodos.forEach(todo => project.addTodo(todo));
-          });
-          projectManager.saveToLocalStorage();
-      }
+    if (!projectManager.loadFromLocalStorage()) {
+      console.log("No projects found in local storage, adding default projects");
+      addDefaultProjects(defaultProjects, defaultTodos);
+      projectManager.saveToLocalStorage();
+    } else {
+      console.log("Projects loaded from local storage");
+    }
   } else {
-      console.error("Local storage is not available");
+    console.error("Local storage is not available");
   }
+}
+
+function addDefaultProjects(defaultProjects, defaultTodos) {
+  defaultProjects.forEach(project => projectManager.addProject(project));
+  defaultProjects[0].addTodo(defaultTodos[0]);
+  defaultProjects[1].addTodo(defaultTodos[1]);
+  defaultProjects[1].addTodo(defaultTodos[2]);
 }

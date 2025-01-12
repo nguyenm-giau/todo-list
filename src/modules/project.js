@@ -17,12 +17,12 @@ export default class Project {
         return this._todos
     }
 
-    sortDateDesc() {
+    sortTodosDateDesc() {
         return [...this._todos].sort((a, b) => b._dueDate - a._dueDate)
     
     }
     
-    sortDateAsc() {
+    sortTodosDateAsc() {
         return [...this._todos].sort((a, b) => a._dueDate - b._dueDate)
     }
 }
