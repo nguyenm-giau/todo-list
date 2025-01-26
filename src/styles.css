@@ -1,1 +1,171 @@
 @import 'modern-normalize';
+
+
+:root {
+    --primary-white: #fff;
+    --secondary-text-color: rgb(80, 79, 79);
+    --hover-bg-color: #eeeeee;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    background: linear-gradient(to bottom, #ffe4e6, #ccfbf1);
+    padding: 0px 20px 40px 20px;
+    height: 100vh;
+}
+
+.menu-container {
+    display: flex;
+    height: 60px;
+    width: calc(100% + 40px); 
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    margin-left: -20px; 
+    margin-right: -20px; 
+
+    margin-bottom: 20px;
+    background-color: var(--primary-white);
+}
+
+.menu-toggle-btn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    transition: 0.2s;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+
+.menu-toggle-btn:hover {
+    opacity: 0.8;
+    background-color: var(--hover-bg-color);
+}
+
+.menu {
+    display: none;
+}
+
+
+.tasks-display {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: var(--primary-white);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px;
+    overflow-y: auto;
+    max-height: 85vh;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-content > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    background-color: black;
+    color: rgb(233, 232, 232);
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+}
+
+.header-content > button:hover {
+    background-color: rgb(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+.add-task-svg {
+    color: white;
+}
+
+.header-text-container > p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--secondary-text-color);
+}
+
+.tab-header-text {
+    font-size: 1.5rem;
+}   
+
+.incomplete-tasks-container > h1, .completed-tasks-container > h1 {
+    font-size: 1.2rem;
+    margin: 20px 0px;
+}
+
+.task-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 8px;
+    justify-content: space-between;
+}
+
+.task-title-container, .task-right-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.task-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.task-desc, .task-due-date {
+    color: var(--secondary-text-color);
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+
+}
+
+.task-action > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+
+    transition: 0.2s;
+
+}
+
+.task-action > button:hover {
+    cursor: pointer;
+    background-color: var(--hover-bg-color);
+}
+
+.task-title-container > input {
+    --size: clamp(25px, 2vw, 30px);
+    width: var(--size);
+    height: var(--size);
+}
+
+
+.menu.open {
+    display: block;
+}
+

@@ -4,6 +4,7 @@ import Task from "./modules/task.js";
 import projectManager from "./modules/projectManager.js";
 import { format } from "date-fns";
 import { initializeProjects } from "./modules/localStorage.js";
+import { setupMenuListeners } from "./modules/ui/menu.js";
 
 const defaultProjects = [
     new Project("Personal"),
@@ -45,6 +46,11 @@ function createTask(title, desc, dueDate, priority, projectName = null) {
 }
 
 
+const initializeEventListeners = () => {
+    setupMenuListeners();
+};
 
 
 console.log(projectManager.getAllTasks())
+
+initializeEventListeners()

@@ -4,22 +4,83 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   </head>
   <body>
     <main>
-      <div class="sidebar"></div>
+      <div class="menu-container">
+        <h1>TODO</h1>
+
+        <button class="menu-toggle-btn"></button>
+
+        <div class="menu">
+          <div class="menu-content">
+            <div class="task-tabs">
+              <div class="all-tasks-tab">All Tasks</div>
+              <div calss="today-tab">Today</div>
+              <div class="this-week-tab">This Week</div>
+            </div>
+  
+            <div class="project-tabs">
+              <div class="header-container">
+                <h1>My Projects</h1>
+                <button class="add-new-project-btn">New Project</button>
+              </div>
+    
+              <div class="projects-container">
+  
+              </div>
+            </div>
+          </div>
+          <div class="footer">Copyright © 2025 Giau Nguyen Manh</div>
+      </div>
+
+      </div>
+
+
       <div class="tasks-display">
         <div>
           <div class="header-content">
-            <h1 class="tab-header"></h1>
-            <p>Manage your tasks</p>
+            <div class="header-text-container">
+              <h1 class="tab-header-text">All Tasks</h1>
+              <p>Manage your tasks</p>
             </div>
-            <button>Add new task</button>
+            <button><svg class="add-task-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>Add new task</button>
+            </div>
+
+
+            <div class="incomplete-tasks-container">
+              <h1>Incomplete Tasks</h1>
+
+
+
+              <div class="task-container">
+                <div class="task-title-container">
+                  <input type="checkbox">
+                  <div>
+                    <h4 class="task-title">Take meds</h4>
+                    <p class="task-desc">No Project | Remember to take with food</p>
+                  </div>
+                </div>
+
+                <div class="task-right-content">
+                  <div class="task-due-date">September 15th, 2023</div>
+
+                  <div class="task-action">
+                    <button><svg class="task-setting" xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            <div class="completed-tasks-container">
+              <h1>Completed Tasks</h1>
+            </div>
+
         </div>
       </div>
     </main>
-    <footer>
-      <div>Copyright © 2025 Giau Nguyen Manh</div>
-    </footer>
   </body>
 </html>
