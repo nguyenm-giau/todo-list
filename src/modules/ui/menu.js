@@ -7,14 +7,21 @@ export const setupMenuListeners = () => {
     menuToggleBtn.innerHTML = openIcon
 
     menuToggleBtn.addEventListener("click", () => {
-        menu.classList.toggle("open");
-        
         if (menu.classList.contains("open")) {
-            menuToggleBtn.innerHTML = closeIcon
+            menu.classList.add("closing");
+            menuToggleBtn.innerHTML = openIcon;
+            setTimeout(() => {
+                menu.classList.remove("open", "closing");
+            }, 300); 
         } else {
-            menuToggleBtn.innerHTML = openIcon
+            menu.classList.add("open");
+            menuToggleBtn.innerHTML = closeIcon;
         }
     });
-
-    
+  
 };
+
+
+const createMenuContent = () => {
+    
+}

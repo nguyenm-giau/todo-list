@@ -3,6 +3,7 @@
 
 :root {
     --primary-white: #fff;
+    --primary-text-color: #2C2C2C;
     --secondary-text-color: rgb(80, 79, 79);
     --hover-bg-color: #eeeeee;
 }
@@ -18,9 +19,11 @@ body {
     background: linear-gradient(to bottom, #ffe4e6, #ccfbf1);
     padding: 0px 20px 40px 20px;
     height: 100vh;
+    color: var(--primary-text-color);
 }
 
 .menu-container {
+    position: relative;
     display: flex;
     height: 60px;
     width: calc(100% + 40px); 
@@ -32,6 +35,12 @@ body {
 
     margin-bottom: 20px;
     background-color: var(--primary-white);
+}
+
+.menu-container > h1 {
+    display: flex;
+    gap: 15px;
+    align-items: center;
 }
 
 .menu-toggle-btn {
@@ -52,7 +61,31 @@ body {
 }
 
 .menu {
-    display: none;
+    left: -300px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; 
+    transform: translateX(-100%); 
+    opacity: 0;
+    position: absolute;
+    padding: 20px;
+    height: calc(100vh - 60px);
+    border-right: 1px solid rgb(231, 231, 231);
+}
+
+
+
+.menu.open {
+    transform: translateX(0); 
+    opacity: 1;
+
+    top: 100%;
+    left: 0;
+    background-color: var(--primary-white);
+    width: min(50%, 280px);
+}
+
+.menu.closing {
+    transform: translateX(-100%); /* Slide out to the left */
+    opacity: 0; /* Fade out */
 }
 
 
@@ -66,6 +99,68 @@ body {
     overflow-y: auto;
     max-height: 85vh;
 }
+
+.task-tabs {
+    display: flex;
+    flex-direction: column;
+    align-items: center ;    
+    gap: 10px;
+    height: 100%;
+    border-bottom: 1px solid rgb(231, 231, 231);
+    padding-bottom: 20px;
+}
+
+.task-tabs > div {
+    display: flex;
+    width: 100%;
+    align-items: center; /* Align icons and text within each tab */
+    gap: 15px;
+    padding: 10px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+
+    font-weight: 600;
+    font-size: 0.9rem;
+    
+}
+
+
+.task-tabs > div:hover {
+    background-color: var(--hover-bg-color);
+}
+
+
+.project-tabs {
+    margin: 20px 0;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-container > h1 {
+    font-size: 1.1rem;
+}
+
+.header-container > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+
+.header-container > button:hover {
+    background-color: var(--hover-bg-color);
+}
+
 
 .header-content {
     display: flex;
@@ -91,6 +186,58 @@ body {
     background-color: rgb(0, 0, 0, 0.8);
     cursor: pointer;
 }
+
+
+.projects-section {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    gap: 15px;
+    align-items: center;
+}
+
+.project-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.project-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    padding: 10px clamp(0px, 1vw, 10px);
+    min-width: 70%;
+    flex: 1;
+}
+
+.project-info:hover, .project-actions > button:hover {
+    background-color: var(--hover-bg-color);
+    border-radius: 8px;
+    cursor: pointer;
+
+}
+
+.project-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-actions > button {
+    border: none;
+    background-color: transparent;
+    padding: 8px;
+}
+
+
+.project-name {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
 
 .add-task-svg {
     color: white;
@@ -165,7 +312,19 @@ body {
 }
 
 
-.menu.open {
-    display: block;
+.footer {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    font-size: clamp(0.5rem, 2vw, 0.8rem);
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+    gap: 10px;
+}
+
+.github-icon {
+    color: black;
 }
 

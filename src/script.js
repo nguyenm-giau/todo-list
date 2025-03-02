@@ -50,7 +50,6 @@ const initializeEventListeners = () => {
     setupMenuListeners();
 };
 
-
 console.log(projectManager.getAllTasks())
 
 initializeEventListeners()
